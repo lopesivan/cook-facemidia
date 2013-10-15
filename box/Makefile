@@ -22,10 +22,10 @@ remove:
 
 ##############################################################################
 reload:
-	@vagrant $@ $(VM)
+	@vagrant $@
 
 halt:
-	@vagrant $@ $(VM)
+	@vagrant $@
 
 init:
 	@vagrant $@ $(VM)
