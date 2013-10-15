@@ -1,6 +1,19 @@
 facemidia Cookbook
 ==================
-TODO: Enter the cookbook description here.
+Receita de configuração do hambiente facemidia.
+
+Comando usado para clonar a maquina base do ubuntu precise 32 bits.
+```
+  vagrant package --output facemidia/precise.box --base precise32
+```
+Como nota, temos que meu laptop não emula sistemas operacionais com 64 bits de
+configuração.
+
+Dentro da pasta facemidia, baixo os arquivos de gerência da maquina virtual
+com o comando abaixo.
+```
+  \curl -L https://raw.github.com/lopesivan/cook-facemidia/master/box/get.sh| bash 
+```
 
 e.g.
 This cookbook makes your favorite breakfast sandwhich.
