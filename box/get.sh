@@ -47,7 +47,7 @@ cat <<EOF > env/Cheffile
 site 'http://community.opscode.com/api/v1'
 
 cookbook 'facemidia', 
-  :git => 'git://github.com/lopesivan/cook-facemidia.git',
+  :git => 'git://github.com/lopesivan/cook-facemidia.git'
 
 #cookbook 'hello_world', 
 #  :git => 'git://github.com/lopesivan/cook-hello_world.git',
