@@ -37,5 +37,31 @@ for f in ${files[*]}; do
   wget $u/$f
 done
 
+# cria env diretório
+make env
+
+cat <<EOF > env/Cheffile
+#!/usr/bin/env ruby
+#^syntax detection
+
+site 'http://community.opscode.com/api/v1'
+
+cookbook 'facemidia', 
+  :git => 'git://github.com/lopesivan/cook-facemidia.git',
+
+#cookbook 'hello_world', 
+#  :git => 'git://github.com/lopesivan/cook-hello_world.git',
+#  :ref => "tags/0.1.0"
+EOF
+
+cat <<EOF > env/exemplo.json
+{
+  "name":"my_node",
+  "run_list": [
+    "recipe[facemidia]"
+  ]
+}
+EOF
+
 # ----------------------------------------------------------------------------
 exit 0
