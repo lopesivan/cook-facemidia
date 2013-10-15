@@ -27,7 +27,7 @@ u=https://raw.github.com/lopesivan/cook-facemidia/master/box
 
 # Run!
 
-files = (
+files=(
 Makefile
 README.md
 Vagrantfile
