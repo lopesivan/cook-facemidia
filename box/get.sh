@@ -46,6 +46,11 @@ cat <<EOF > env/Cheffile
 
 site 'http://community.opscode.com/api/v1'
 
+cookbook 'runit'
+
+cookbook 'nginx', 
+  :git => 'git://github.com/opscode-cookbooks/nginx.git'
+
 cookbook 'facemidia', 
   :git => 'git://github.com/lopesivan/cook-facemidia.git'
 
@@ -58,10 +63,24 @@ cat <<EOF > env/exemplo.json
 {
   "name":"my_node",
   "run_list": [
-    "recipe[facemidia]"
+    "recipe[facemidia]", "recipe[nginx]"
   ]
 }
 EOF
 
+cat <<EOF > env/nodes/vagrant.json
+{
+  "nginx": {
+    "version": "1.2.3",
+    "default_site_enabled": true,
+    "source": {
+      "modules": ["http_gzip_static_module", "http_ssl_module"]
+    }
+  },
+  "run_list": [
+    "recipe[nginx::source]"
+    ]
+}
+EOF
 # ----------------------------------------------------------------------------
 exit 0
