@@ -14,3 +14,9 @@ ssh -p 2222 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o LogLe
 vagrant provision
 
 vagrant plugin install vagrant-vbox-snapshot
+
+knife cookbook site download apache2
+
+mkdir cookbooks
+tar xvzf apache2-*.tar.gz -C cookbooks
+

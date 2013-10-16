@@ -1,0 +1,61 @@
+// ###########################################################################
+// * testes ##################################################################
+// ###########################################################################
+// * criando usuário facemidia
+// createuser -h localhost -U postgres -W facemidia --no-superuser --no-createrole --createdb
+// 
+// * Definindo senha do usuário 'facemidia'
+// psql -h localhost -U postgres -W
+// ALTER USER facemidia WITH PASSWORD '12345'
+// ou ...
+// PGPASSWORD=postgres psql -h localhost -U postgres -c"ALTER USER facemidia WITH PASSWORD '12345'"
+//
+// * Criando database db_facemidia para o usuário facemidia
+// createdb  -h localhost -U postgres -W db_facemidia -O facemidia"
+
+//
+// ###########################################################################
+// * meus comandos ###########################################################
+// ###########################################################################
+// PGPASSWORD=__my_postgresql_pass__ createuser -h localhost -U postgres facemidia --no-superuser --no-createrole --createdb
+// PGPASSWORD=__my_postgresql_pass__ psql -h localhost -U postgres -c"ALTER USER facemidia WITH PASSWORD '12345';"
+// PGPASSWORD=__my_postgresql_pass__ createdb  -h localhost -U postgres db_facemidia -O facemidia
+// então:
+// PGPASSWORD=12345 psql -h localhost -d db_facemidia -U facemidia
+//
+// * Listando databases
+// PGPASSWORD=__my_postgresql_pass__ psql -h localhost -U postgres --list
+//
+// * Removendo database db_facemidia
+// PGPASSWORD=__my_postgresql_pass__ psql -h localhost -U postgres -c"DROP DATABASE db_facemidia;"
+//
+// * Removendo user facemidia
+// PGPASSWORD=__my_postgresql_pass__ psql -h localhost -U postgres -c"DROP USER facemidia;"
+
+{
+  "postgresql": {
+    "enable_pgdg_apt": true,
+    "dir": "/etc/postgresql/9.2/main",
+    "client": {
+      "packages": ["postgresql-client-9.2"]
+    },
+    "server": {
+      "packages": ["postgresql-9.2", "postgresql-server-dev-9.2"]
+    },
+    "contrib": {
+      "packages": ["postgresql-contrib-9.2"]
+    },
+    "password": {
+      "postgres": "__my_postgresql_pass__"
+    },
+    "pg_hba": [
+      {"type": "local", "db": "all", "user": "all", "addr": "nil", "method": "trust"},
+      {"type": "host", "db": "all", "user": "all", "addr": "127.0.0.1/32", "method": "trust"},
+      {"type": "host", "db": "all", "user": "all", "addr": "::1/128", "method": "trust"}
+    ],
+    "version": "9.2"
+  },
+  "run_list": [
+    "recipe[postgresql::server]"
+  ]
+}
