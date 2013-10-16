@@ -68,6 +68,8 @@ cat <<EOF > env/exemplo.json
 }
 EOF
 
+mkdir -p env/nodes
+
 cat <<EOF > env/nodes/vagrant.json
 {
   "nginx": {
