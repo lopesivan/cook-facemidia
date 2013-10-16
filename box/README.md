@@ -1,7 +1,7 @@
 vagrant box add facemidia precise.box
 
 vagrant init facemidia
-  
+
 vagrant up
 
 vagrant ssh
@@ -13,11 +13,12 @@ ssh -p 2222 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o LogLe
 
 vagrant provision
 
-vagrant plugin install vagrant-vbox-snapshot
-
 knife cookbook site download apache2
-
 mkdir cookbooks
 tar xvzf apache2-*.tar.gz -C cookbooks
 
 sudo apt-get install lxc cgroup-lite redir
+vagrant plugin install vagrant-vbox-snapshot
+
+vagrant up --provider=lxc
+vagrant box add quantal64 /home/ivan/vagrant-lxc-quantal64-2013-07-12.box
