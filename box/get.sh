@@ -84,5 +84,8 @@ cat <<EOF > env/nodes/vagrant.json
     ]
 }
 EOF
+
+rvm use 1.9.3 --rvmrc --create
+
 # ----------------------------------------------------------------------------
 exit 0
