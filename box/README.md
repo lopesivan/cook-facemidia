@@ -20,3 +20,4 @@ knife cookbook site download apache2
 mkdir cookbooks
 tar xvzf apache2-*.tar.gz -C cookbooks
 
+sudo apt-get install lxc cgroup-lite redir
